@@ -1,0 +1,20 @@
+" Author: Prashanth Chandra <coolshanth94@gmail.com>
+" Description: Test shell.vim checker for sh files
+
+Given sh (Shell script with incorrectly delimited heredoc):
+  #! /usr/bin/env bash
+
+  /usr/local/bin/vim -Nu <(cat << VIMRC
+  filetype off
+  set rtp+=vader.vim
+  set rtp+=.
+  set rtp+=after
+  filetype plugin indent on
+  syntax enable
+    VIMRC) -c 'Vader! test/*' > /dev/null
+
+Execute (Sleep for 1 second):
+  sleep 1
+
+Then:
+  AssertEqual getloclist(0), []

@@ -2,6 +2,7 @@ sudo: required
 
 before_script: |
   git clone https://github.com/junegunn/vader.vim.git
+  git clone https://github.com/w0rp/ale
 
   git clone https://github.com/vim/vim
   cd vim
@@ -14,6 +15,7 @@ script: |
   /usr/local/bin/vim -Nu <(cat << VIMRC
   filetype off
   set rtp+=vader.vim
+  set rtp+=ale
   set rtp+=.
   set rtp+=after
   filetype plugin indent on
